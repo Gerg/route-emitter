@@ -10,6 +10,7 @@ import (
 type RegistryMessage struct {
 	Host                 string            `json:"host"`
 	Port                 uint32            `json:"port"`
+	HttpVersion          uint32            `json:"http_version"`
 	TlsPort              uint32            `json:"tls_port,omitempty"`
 	URIs                 []string          `json:"uris"`
 	App                  string            `json:"app,omitempty" hash:"ignore"`
@@ -36,6 +37,7 @@ func RegistryMessageFor(endpoint Endpoint, route Route, emitEndpointUpdatedAt bo
 		URIs:                []string{route.Hostname},
 		Host:                endpoint.Host,
 		Port:                endpoint.Port,
+		HttpVersion:         route.HttpVersion,
 		TlsPort:             endpoint.TlsProxyPort,
 		App:                 route.LogGUID,
 		IsolationSegment:    route.IsolationSegment,

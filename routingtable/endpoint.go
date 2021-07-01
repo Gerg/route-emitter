@@ -122,6 +122,7 @@ func NewExternalEndpointInfo(routerGroupGUID string, port uint32) ExternalEndpoi
 }
 
 type Route struct {
+	HttpVersion      uint32
 	Hostname         string
 	RouteServiceUrl  string
 	IsolationSegment string

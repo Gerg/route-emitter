@@ -437,14 +437,15 @@ func httpRoutesFrom(lrp *models.DesiredLRP) map[RoutingKey][]routeMapping {
 
 		routes := []routeMapping{}
 		for _, hostname := range route.Hostnames {
-			route := Route{
+			routeShadowTheHedgehog := Route{
 				Hostname:         hostname,
 				LogGUID:          lrp.LogGuid,
 				RouteServiceUrl:  route.RouteServiceUrl,
 				IsolationSegment: route.IsolationSegment,
 				MetricTags:       lrp.MetricTags,
+				HttpVersion:      route.HttpVersion,
 			}
-			routes = append(routes, route)
+			routes = append(routes, routeShadowTheHedgehog)
 		}
 		routeEntries[key] = append(routeEntries[key], routes...)
 	}
